@@ -1,4 +1,4 @@
-name: APK-J Build
+name: APK-T Build
 
 on:
 #  push:
@@ -15,11 +15,11 @@ jobs:
         with:
           fetch-depth: 0
       - name: Clone Project
-        run: git clone -b main --depth=1 https://github.com/heroaku/TVBoxOS_q215613905
+        run: git clone -b main --depth=1 https://github.com/heroaku/TVBox_TK.git
       - name: DIY
         run: |
-          chmod +x diy-J.sh
-          bash ${{ github.workspace }}/diy-J.sh
+          chmod +x diy-T.sh
+          bash ${{ github.workspace }}/diy-T.sh
       - name: Build With Gradle
         run: |
           num=$(find ${{ github.workspace }} -name gradlew  | awk -F"/" '{print NF-1}')
@@ -36,5 +36,5 @@ jobs:
       - name: Upload App To Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: com.github.tvbox.osc.pj
+          name: com.github.tvbox.osc.pytk
           path: ${{ github.workspace }}/apk/*
